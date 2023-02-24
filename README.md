@@ -4,4 +4,4 @@ Flutter Android TV application to make your television more stylish.
 
 ## Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8mcCKJQ9GqI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[Vídeo da Apresentação do Projeto](https://youtu.be/8mcCKJQ9GqI)
