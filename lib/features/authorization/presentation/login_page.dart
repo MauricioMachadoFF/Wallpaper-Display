@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:wallpaper_display/core/route/routes.dart';
+import 'package:wallpaper_display/design_system/design_system.dart';
 import 'package:wallpaper_display/features/authorization/presentation/widgets/login_image_carroussel.dart';
 
 class LoginPage extends StatelessWidget {
@@ -7,6 +9,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: deepBlue,
       body: SafeArea(
           child: Row(
         children: [
@@ -17,29 +20,43 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text('Seja bem-vindo!'),
+                  Container(
+                    height: 64,
+                    width: 64,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/logo.png"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                  const Text(
+                    'Seja bem-vindo!',
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: white,
+                    ),
+                  ),
                   const SizedBox(height: 4),
-                  const Text('Por favor insira suas informações de acesso.'),
-                  const SizedBox(height: 16),
-                  SizedBox(
-                    width: double.maxFinite,
-                    child: DSButton(
-                      label: 'banana',
-                      onTap: () {},
+                  const Text(
+                    'Por favor insira suas informações de acesso.',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: white,
                     ),
                   ),
                   const DSDivider(),
                   SizedBox(
                     width: double.maxFinite,
                     child: DSButton(
-                      label: 'maça',
-                      onTap: () {},
+                      label: 'Entrar',
+                      onTap: () => Navigator.of(context).pushReplacementNamed(
+                        Routes.imagesList,
+                      ),
                     ),
                   ),
-                  // const TextField(),
-                  //TODO(MAURICIO): Create DS token for height and width
                   const SizedBox(height: 16),
-                  // const TextField(),
                 ],
               ),
             ),
@@ -53,54 +70,6 @@ class LoginPage extends StatelessWidget {
   }
 }
 
-class DSButton extends StatefulWidget {
-  const DSButton({
-    super.key,
-    required this.label,
-    required this.onTap,
-    this.selectedColor,
-    this.unselectedColor,
-  });
-
-  final String label;
-  final VoidCallback onTap;
-  final Color? selectedColor;
-  final Color? unselectedColor;
-
-  @override
-  State<DSButton> createState() => _DSButtonState();
-}
-
-class _DSButtonState extends State<DSButton> {
-  bool _isHovered = false;
-
-  Color get _selectedColor => widget.selectedColor ?? Colors.grey.shade700;
-  Color get _unselectedColor => widget.unselectedColor ?? Colors.grey.shade300;
-
-  Color get _backgroundColor => _isHovered ? _selectedColor : _unselectedColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      focusColor: Colors.transparent,
-      onTap: widget.onTap,
-      onFocusChange: (value) => setState(() {
-        _isHovered = value;
-      }),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: _backgroundColor,
-          borderRadius: BorderRadius.circular(32),
-        ),
-        child: Center(
-          child: Text(widget.label),
-        ),
-      ),
-    );
-  }
-}
-
 class DSDivider extends StatelessWidget {
   const DSDivider({super.key});
 
@@ -110,7 +79,7 @@ class DSDivider extends StatelessWidget {
       children: const [
         SizedBox(height: 8),
         Divider(
-          color: Colors.black,
+          color: white,
         ),
         SizedBox(height: 8),
       ],
