@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:wallpaper_display/design_system/colors.dart';
 
 class LoginImageCarroussel extends StatefulWidget {
   const LoginImageCarroussel({super.key});
@@ -69,13 +70,20 @@ class _LoginImageCarrousselState extends State<LoginImageCarroussel> {
             padding: const EdgeInsets.all(24),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                Text(
-                  "Transforme sua televisão em uma nova peça de decoração para sua casa. Use da nossa mais vasta coleção de imagens para tornar a sua televisão ainda mais útil e luxuosa",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: Colors.white,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: deepBlue,
+                  ),
+                  child: const Text(
+                    "Transforme sua televisão em uma nova peça de decoração para sua casa. Use da nossa mais vasta coleção de imagens para tornar a sua televisão ainda mais útil e luxuosa",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: white,
+                    ),
                   ),
                 )
               ],
