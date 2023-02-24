@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:wallpaper_display/features/authorization/presentation/login_page.dart';
+import 'package:wallpaper_display/core/injection.dart';
+import 'package:wallpaper_display/core/route/router.dart';
+import 'package:wallpaper_display/core/route/routes.dart';
 
 void main() {
+  configureDependecies();
   runApp(const MyApp());
 }
 
@@ -16,12 +19,14 @@ class MyApp extends StatelessWidget {
         LogicalKeySet(LogicalKeyboardKey.select): const ActivateIntent(),
       },
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Wallpaper Display',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: const LoginPage(),
+        initialRoute: Routes.login,
+        onGenerateRoute: WPRouter.routeFromSettings,
       ),
     );
   }
